@@ -11,12 +11,25 @@ class _ChooseLocationState extends State<ChooseLocation> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    print('init state ran');
+    getData();
+    getData2();
+    print('statement');
+  }
+
+  void getData() async {
+    await Future.delayed(Duration(seconds: 3), () {
+      print('getData');
+    });
+  }
+
+  void getData2() {
+    Future.delayed(Duration(seconds: 1), () {
+      print('getData2');
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    print('build state ran');
     return Scaffold(
         backgroundColor: Colors.grey[300],
         appBar: AppBar(
