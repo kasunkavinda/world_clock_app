@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.world_clock">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="world_clock"
         android:icon="@mipmap/ic_launcher">
