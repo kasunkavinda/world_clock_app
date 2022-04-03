@@ -9,29 +9,43 @@ class _HomeState extends State<Home> {
   Map data = {};
   @override
   Widget build(BuildContext context) {
-    data = ModalRoute.of(context).settings.arguments;
-    print(data);
+    data = ModalRoute.of(context).settings.arguments as Map;
+
     return Scaffold(
         body: SafeArea(
-            child:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-      FlatButton.icon(
+            child: Container(
+      decoration: BoxDecoration(
+          image: DecorationImage(
+              image: data['isDayTime']
+                  ? NetworkImage(
+                      'https://img.freepik.com/free-vector/vector-images-forest-daytime_46176-155.jpg')
+                  : NetworkImage(
+                      'https://www.freevector.com/uploads/vector/preview/16239/FreeVector-City-Night-Vector.jpg'),
+              fit: BoxFit.cover)),
+      child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+        FlatButton.icon(
           onPressed: () {
             Navigator.pushNamed(context, 'location');
           },
-          icon: Icon(Icons.edit_location),
-          label: Text('Edit Location')),
-      SizedBox(height: 40),
-      Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          color: Colors.black87,
+          icon: Icon(Icons.edit_location, color: Colors.white),
+          label: Text(
+            'Edit Location',
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+        SizedBox(height: 40),
+        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Text(
+            data['location'],
+            style: TextStyle(fontSize: 30),
+          )
+        ]),
         Text(
-          data['location'],
-          style: TextStyle(fontSize: 30),
+          data['time'],
+          style: TextStyle(fontSize: 50),
         )
       ]),
-      Text(
-        data['time'],
-        style: TextStyle(fontSize: 50),
-      )
-    ])));
+    )));
   }
 }
